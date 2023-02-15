@@ -1,6 +1,0 @@
-# Compile a less file
-
-> assets
-$ exists target/web/public/main/main.css
-$ exists target/web/public/main/main.css.map
-

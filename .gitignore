@@ -20,3 +20,12 @@ project/plugins/project/
 # Idea
 .idea/
 .idea_modules/
+
+# Bloop
+.bsp
+
+# Metals
+.bloop/
+.metals/
+metals.sbt
+

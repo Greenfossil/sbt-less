@@ -1,13 +1,21 @@
 lazy val `sbt-less` = project in file(".")
+enablePlugins(SbtWebBase)
+
+organization := "com.greenfossil"
 description := "sbt-web less plugin"
 
 libraryDependencies ++= Seq(
-  "org.webjars" % "less-node" % "2.7.2",
-  "org.webjars" % "mkdirp" % "0.5.0",
-  "org.webjars.npm" % "clean-css" % "4.0.5",
+  "org.webjars.npm" % "less" % "4.1.3",
+  "org.webjars.npm" % "mkdirp" % "0.5.6",
+  "org.webjars.npm" % "clean-css" % "5.2.0",
   "org.webjars.npm" % "less-plugin-clean-css" % "1.5.1" intransitive(),
-  "org.webjars" % "es6-promise-node" % "2.1.1"
+  "org.webjars" % "es6-promise-node" % "4.2.8",
 )
 
-addSbtJsEngine("1.2.2")
-addSbtWeb("1.4.3")
+scriptedLaunchOpts ++= Seq("-Dplugin.version" + version.value, "-Dsbt.log.noformat")
+scriptedBufferLog := false
+
+addSbtJsEngine("1.2.3")
+addSbtWeb("1.4.4")
+
+updateOptions := updateOptions.value.withLatestSnapshots(false)

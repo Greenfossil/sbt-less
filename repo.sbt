@@ -1,18 +1,18 @@
-ThisBuild / organizationName := "Greenfossil Pte Ltd"
-ThisBuild / organizationHomepage := Some(url("https://greenfossil.com/"))
+organizationName := "Greenfossil Pte Ltd"
+organizationHomepage := Some(url("https://greenfossil.com/"))
 
-ThisBuild / developers := List(
+developers := List(
   Developer("greenfossil", "Greenfossil Pte Ltd", "devadmin@greenfossil.com", url("https://github.com/Greenfossil"))
 )
 
-ThisBuild / licenses := List(
+licenses := List(
   "Apache 2" -> new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")
 )
 
 // Remove all additional repository other than Maven Central from POM
-ThisBuild / pomIncludeRepository := { _ => false }
+pomIncludeRepository := { _ => false }
 
-ThisBuild / publishTo := {
+publishTo := {
   // For accounts created after Feb 2021:
   val nexus = "https://s01.oss.sonatype.org/"
   if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
@@ -22,7 +22,7 @@ ThisBuild / publishTo := {
 val username = sys.env.getOrElse("PUBLISH_USER", "")
 val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
 
-ThisBuild / credentials += Credentials(
+credentials += Credentials(
   "Sonatype Nexus Repository Manager", "s01.oss.sonatype.org", username, password
 )
 

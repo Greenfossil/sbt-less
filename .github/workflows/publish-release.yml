@@ -1,0 +1,28 @@
+name: Publish to Maven repository 
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 8
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+        cache: 'sbt'
+    - name: Import GPG Key
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+    - name: Publish
+      run: sbt clean publishSigned
+      env:
+        PUBLISH_USER: ${{secrets.PUBLISH_USER}}
+        PUBLISH_PASSWORD: ${{secrets.PUBLISH_PASSWORD}}
+      

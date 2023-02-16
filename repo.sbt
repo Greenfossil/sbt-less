@@ -26,4 +26,4 @@ ThisBuild / credentials += Credentials(
   "Sonatype Nexus Repository Manager", "s01.oss.sonatype.org", username, password
 )
 
-ThisBuild / publishMavenStyle := true
+publishMavenStyle := true

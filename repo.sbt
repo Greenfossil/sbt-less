@@ -19,11 +19,6 @@ publishTo := {
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
-val username = sys.env.getOrElse("PUBLISH_USER", "")
-val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
-
-credentials += Credentials(
-  "Sonatype Nexus Repository Manager", "s01.oss.sonatype.org", username, password
-)
+credentials += Credentials(Path.userHome / ".sbt" / ".sonatype-credentials")
 
 publishMavenStyle := true

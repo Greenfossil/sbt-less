@@ -12,7 +12,10 @@ libraryDependencies ++= Seq(
   "org.webjars" % "es6-promise-node" % "4.2.8",
 )
 
+javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
+
 scriptedLaunchOpts ++= Seq("-Dplugin.version" + version.value, "-Dsbt.log.noformat")
+
 scriptedBufferLog := false
 
 addSbtJsEngine("1.2.3")
